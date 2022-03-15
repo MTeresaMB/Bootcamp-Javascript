@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.list-header > .title{
+  font-family: 'Lora', serif;
+  margin: auto;
+  padding: 20px;
+  text-align: center
+}
+
+.list-item{
+  display: flex;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 15px;
+  margin: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.list-name{
+  min-width: 0;
+  max-width: 200px;
+}
+.list-name .item-name{
+  font-size: 1.4em;
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+.list-comment{
+  min-width: 0;
+  max-width: 300px;
+}
+.list-comment .item-comment{
+  font-size: 1.2em;
+  font-family: 'Raleway', sans-serif;
+  white-space: wrap;
+}
+.list-phone .item-phone{
+  font-size: 1.6em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bolder;
+}
