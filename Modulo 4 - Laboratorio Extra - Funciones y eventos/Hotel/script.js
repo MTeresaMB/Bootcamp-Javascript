@@ -11,72 +11,104 @@ window.addEventListener('load', function() {
     let countNights = document.querySelector('#nights').value;
     let countParking = document.querySelector('#parking').value;
     let checkbox = document.querySelector('#spa').checked;
-
-    let amount = countNights * 0.25;
     let priceTotal;
+    // if(checkbox === true){
+    //   console.log(checkbox);
+    //   document.getElementById('bath').innerHTML += "Spa seleccionado <br/>";
 
-    if(selectBed === 'Single'){
-      priceTotal = priceRoom(selectRoom, countNights, checkbox, countParking) - amount;
-      printBill(selectRoom, selectBed, countNights, countParking);
-      document.getElementById('amount').innerHTML += "Descuento 25% aplicado a la tarifa";
-      document.getElementById('priceTotal').innerHTML += priceTotal;
+    // }
 
+    if(selectBed === 'Single') {
+      priceTotal = priceRoom(selectRoom, countNights, checkbox) - amount(countNights) + parking(countParking);
+      console.log(priceTotal)
+      document.getElementById('precio').innerHTML = priceTotal + "<br/>";
     }else if(selectBed === 'Triple'){
-      priceTotal = priceRoom(selectRoom, countNights, checkbox, countParking) + amount;
-      printBill(selectRoom, selectBed, countNights, countParking);
-      document.getElementById('amount').innerHTML += "Tarifa +25% <br/>";
-
+      priceTotal = priceRoom(selectRoom, countNights, checkbox) + amount(countNights) + parking(countParking);
+      document.getElementById('precio').innerHTML = priceTotal + "<br/>";
     }else{
-      priceTotal = priceRoom(selectRoom, countNights, checkbox, countParking);
-      printBill(selectRoom, selectBed, countNights, countParking);
-      document.getElementById('amount').innerHTML += "No se aplica descuento para esta habitacion <br/>";  
+      priceTotal = priceRoom(selectRoom, countNights, checkbox) + parking(countParking);
+      document.getElementById('precio').innerHTML = priceTotal + "<br/>";
     }
+    // total(selectBed, checkbox);
+    print(selectRoom,selectBed,countNights,countParking, checkbox);
+    
   })
-  function priceRoom(selectRoom, countNights, checkbox, countParking) {
+
+
+  // function total(selectBed, checkbox){
+  //   let priceTotal
+  //   if(selectBed === 'Single') {
+  //     priceTotal = priceRoom(selectRoom, countNights, checkbox);
+  //     console.log(priceTotal)
+  //     document.getElementById('total').innerHTML = priceTotal + "<br/>";
+      
+  //   }else if(selectBed === 'Triple'){
+  //     priceTotal = priceRoom(selectRoom, countNights, checkbox) + amount(countNights);
+  //     document.getElementById('total').innerHTML = priceTotal + "<br/>";
+  //   }else{
+  //     priceTotal = priceRoom(selectRoom, countNights, checkbox);
+  //     document.getElementById('total').innerHTML = priceTotal + "<br/>";
+  //   }
+  // }
+
+
+
+  function print(selectRoom,selectBed,countNights,countParking, checkbox){
+    if(checkbox === true){
+      document.getElementById('bath').innerHTML += "Spa seleccionado <br/>";
+    }else{
+      document.getElementById('bath').innerHTML += "Spa no seleccionado <br/>";
+    }
+    document.getElementById('selectRoom').innerHTML = selectRoom + "<br/>";
+    document.getElementById('selectBed').innerHTML += selectBed + "<br/>";
+    document.getElementById('countNights').innerHTML += countNights + "<br/>";
+    document.getElementById('countParking').innerHTML += countParking + "<br/>";
+  }
+  //funcion parking
+  function parking(countParking){
     countParking *= 10;
-    let priceSpa = 20;
-    let rateRoom;
-    let valueRoom;
+    return countParking;
+  }
+
+  //funcion descuento
+  function amount(countNights){
+    let amount = countNights * 0.25;
+    return amount;
+  }
+
+  //funcion precio por la habitacion, spa y parking
+  function priceRoom(selectRoom, countNights, checkbox) {
+
+    let priceSpa = 20; //precio del spa
+    let rateRoom; //precio total de la habitacion con o sin spa
+    let valueRoom; //precio de la habitacion
+
     switch(selectRoom){
       case 'Standard':
         valueRoom = 100;
         if(checkbox === true){
-          rateRoom = ((valueRoom * countNights) + priceSpa)  + countParking;
+          rateRoom = ((valueRoom * countNights) + priceSpa);
         }else{
-          rateRoom = (valueRoom * countNights) + countParking;
+          rateRoom = (valueRoom * countNights);
         }
       break;
       case 'JuniorSuite':
         valueRoom = 120;
         if(checkbox === true){
-          rateRoom = ((valueRoom * countNights) + priceSpa) + countParking;
+          rateRoom = ((valueRoom * countNights) + priceSpa);
         }else{
-          rateRoom = (valueRoom * countNights) + countParking;
+          rateRoom = (valueRoom * countNights);
         }
       break;
       case 'Suite':
         valueRoom = 150;
         if(checkbox === true){
-          rateRoom = ((valueRoom * countNights) + priceSpa) + countParking;
+          rateRoom = ((valueRoom * countNights) + priceSpa);
         }else{
-          rateRoom = (valueRoom * countNights) + countParking;
+          rateRoom = (valueRoom * countNights);
         }
       break;
     }
     return rateRoom;
-  }
-
-  function printBill(selectRoom,selectBed,countNights,countParking){
-    document.getElementById('selectRoom').innerHTML = selectRoom + "<br/>";
-    document.getElementById('selectBed').innerHTML += selectBed + "<br/>";
-    document.getElementById('countNights').innerHTML += countNights + "<br/>";
-    document.getElementById('countParking').innerHTML += countParking + "<br/>";
-    
-  }
-
-  if(checkbox === true){
-    document.getElementById('spa').innerHTML += "Spa solicitado <br/>";
-  }else{
-    document.getElementById('spa').innerHTML += "Spa no solicitado <br/>";
   }
 })
