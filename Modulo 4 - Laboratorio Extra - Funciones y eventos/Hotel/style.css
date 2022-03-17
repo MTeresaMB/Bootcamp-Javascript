@@ -31,3 +31,18 @@ label{
 .card-body{
   width: 100%;
 }
+
+#result{
+  font-size: 1.5em;
+  width: 43%;
+  margin: auto;
+}
+#result p{
+  margin: 20px;
+  align-items: left;
+}
+
+#prize {
+  font-size: 1.6em;
+  text-decoration-line: underline;
+}
