@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function() {
       document.getElementById('prize').innerHTML += priceTotal + "€<br/>";
     }else if(selectBed === 'Triple'){
       priceTotal = priceRoom(selectRoom, countNights, checkbox) + amount(countNights) + parking(countParking);
-      document.getElementById('amount').innerHTML += "Discount not applicable<br/>";
+      document.getElementById('amount').innerHTML += "Increased rate " + amount(countNights) +"€<br/>";
       document.getElementById('prize').innerHTML += priceTotal + "€<br/>";
     }else{
       priceTotal = priceRoom(selectRoom, countNights, checkbox) + parking(countParking);
