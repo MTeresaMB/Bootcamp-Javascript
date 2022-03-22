@@ -1,0 +1,65 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #aa4b6b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #3b8d99,
+    #6b6b83,
+    #aa4b6b
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3b8d99,
+    #6b6b83,
+    #aa4b6b
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+h1{
+  color: #fff;
+  margin: 20px;
+}
+table{
+  margin: auto;
+  width: 100%;
+}
+thead {
+  background-color: rgb(40, 39, 59);
+  color: #fff;
+  font-size: 1.2em;
+}
+thead th {
+  padding: 20px;
+}
+
+tr > td {
+  background-color: rgb(225, 221, 241);
+  padding: 50px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+button{
+  border-radius: 15px;
+  border: none;
+  width: 10%;
+  margin: 10px;
+  padding: 20px;
+  font-size: 1.8em;
+  font-weight: 700;
+  font-family: serif;
+  box-shadow: 3px 3px 3px #24565d;
+}
+button:active{
+  background-color:#6b6b83;
+  color: #fff;
+  transform: translateY(3px);
+}
+#listado{
+  font-size: 1.5em;
+  width: 15%;
+  padding: 23px;
+}
