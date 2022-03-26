@@ -29,13 +29,13 @@ const carrito = [{
 
 ];
 
-let compra = 0;
-let buttonCesta = document.getElementById('carrito');
-let buttonListado = document.getElementById('listado');
-let buttonBorrado = document.getElementById('borrado');
-buttonCesta.addEventListener('click', addElement);
-buttonListado.addEventListener('click', listadoProductos);
-buttonBorrado.addEventListener('click', function(){
+let buttonCesta = document.getElementById('carrito').addEventListener('click', addElement);
+let buttonListado = document.getElementById('listado').addEventListener('click', listadoProductos);
+/**
+ * funcion que muestra listado de los productos sin el producto indicado de borrar
+ */
+
+let buttonBorrado = document.getElementById('borrado').addEventListener('click', function(){
   let indice;
   for(let i = 0; i < carrito.length; i++){
     if(carrito[i].id == 54657){
@@ -44,52 +44,84 @@ buttonBorrado.addEventListener('click', function(){
   }
   carrito.splice(indice, 1);
   listadoProductos();
-});
+});;
 
+let buttonTotalCarrito = document.getElementById('totalCarrito').addEventListener('click', totalCarrito);
+let buttonPrime = document.getElementById('productoPrime').addEventListener('click', productPrime);
 
+let tableBody = document.getElementById('tbody');
+
+/**
+ * funcion que muestra el carrito de productos con el total de cada producto calculado
+ */
 function addElement() {
   tabla.style.display = 'block';
-  while (compra < carrito.length) {
-    let fila = document.createElement('tr');
-    let nombre = document.createElement('td');
-    let precio = document.createElement('td');
-    let cantidad = document.createElement('td');
-    let totalProducto = document.createElement('td');
-
-    nombre.innerHTML = carrito[compra].name;
-    precio.innerHTML = carrito[compra].price + "€";
-    cantidad.innerHTML = carrito[compra].count;
-    totalProducto.innerHTML = Number((carrito[compra].price * carrito[compra].count).toFixed(2)) + "€";
-
-    fila.appendChild(nombre);
-    fila.appendChild(precio);
-    fila.appendChild(cantidad);
-    fila.appendChild(totalProducto);
-    tabla.appendChild(fila);
-    compra++;
+  for(compra in carrito) {
+    let nombre = `<td>${carrito[compra].name}</td>`;
+    let precio = `<td>${carrito[compra].price}</td>`;
+    let cantidad = `<td>${carrito[compra].count}</td>`;
+    let totalProducto = `<td>${Number((carrito[compra].price * carrito[compra].count).toFixed(2)) + "€"}</td>`;
+    tableBody.innerHTML += `<tr>${nombre + precio + cantidad + totalProducto}</tr>`;
   };
 };
 
+/**
+ * Muestra el listado de productos junto con su precio 
+ */
 function listadoProductos() {
   tabla.style.display = 'block';
-  while (compra < carrito.length) {
-    let fila = document.createElement('tr');
-    let nombre = document.createElement('td');
-    let precio = document.createElement('td');
-    let cantidad = document.createElement('td');
-    let totalProducto = document.createElement('td');
-
-    nombre.innerHTML = carrito[compra].name;
-    precio.innerHTML = carrito[compra].price + "€";
-    cantidad.innerHTML = '';
-    totalProducto.innerHTML = '';
-
-    fila.appendChild(nombre);
-    fila.appendChild(precio);
-    fila.appendChild(cantidad);
-    fila.appendChild(totalProducto);
-    tabla.appendChild(fila);
-    compra++;
+  for(compra in carrito) {
+    let nombre = `<td>${carrito[compra].name}</td>`;
+    let precio = `<td>${carrito[compra].price}</td>`;
+    let cantidad = `<td></td>`;
+    let totalProducto = `<td></td>`;
+    tableBody.innerHTML += `<tr>${nombre + precio + cantidad + totalProducto}</tr>`;
   };
+}
+
+/**
+ * Calcula el total de los productos del carrito, si el total supera los 100€ se aplica descuento del 5%
+ */
+function totalCarrito(){
+  let total = 0;
+  let totalAmount = 0;
+  tabla.style.display = 'block';
+  for(compra in carrito){
+    let nombre = `<td>${carrito[compra].name}</td>`;
+    let precio = `<td>${carrito[compra].price}</td>`;
+    let cantidad = `<td>${carrito[compra].count}</td>`;
+    let totalProducto = `<td>${Number((carrito[compra].price * carrito[compra].count).toFixed(2)) + "€"}</td>`;
+     
+    tableBody.innerHTML += `<tr>${nombre + precio + cantidad + totalProducto}</tr>`;
+    total += carrito[compra].price * carrito[compra].count;
+  }
+  if(total > 100){
+    let amount = total * 0.05;
+    totalAmount = total - amount;
+    console.log(totalAmount);
+    tableBody.innerHTML += `<tr><td><b>Total</td><td>Descuento 5%</td><td></td><td>${totalAmount.toFixed(2)}</td></tr>`;
+  }else{
+    tableBody.innerHTML += `<tr><td><b>Total</td><td></td><td></td><td>${total}</td></tr>`;
+  }
+  
+}
+
+/**
+ * Lista los productos que son prime
+ */
+function productPrime(){
+  tabla.style.display = 'block';
+  let listPrime = [];
+  for (compra in carrito){
+    if(carrito[compra].premium == true){
+      listPrime.push(carrito[compra]);
+      let nombre = `<td>${carrito[compra].name}</td>`;
+      let precio = `<td>${carrito[compra].price}</td>`;
+      let cantidad = `<td>${carrito[compra].count}</td>`;
+      let totalProducto = `<td>${Number((carrito[compra].price * carrito[compra].count).toFixed(2)) + "€"}</td>`;
+      let sinGastos = `<td>Pedido sin gastos de envio</td>`;
+      tableBody.innerHTML += `<tr>${nombre + precio + cantidad + totalProducto + sinGastos}</tr>`;
+    }
+  }
 }
 
