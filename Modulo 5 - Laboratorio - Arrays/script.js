@@ -56,7 +56,7 @@ let tableBody = document.getElementById('tbody');
  */
 function addElement() {
   tabla.style.display = 'block';
-  for(compra in carrito) {
+  for(let compra in carrito) {
     let nombre = `<td>${carrito[compra].name}</td>`;
     let precio = `<td>${carrito[compra].price}</td>`;
     let cantidad = `<td>${carrito[compra].count}</td>`;
@@ -70,7 +70,7 @@ function addElement() {
  */
 function listadoProductos() {
   tabla.style.display = 'block';
-  for(compra in carrito) {
+  for(let compra in carrito) {
     let nombre = `<td>${carrito[compra].name}</td>`;
     let precio = `<td>${carrito[compra].price}</td>`;
     let cantidad = `<td></td>`;
@@ -86,7 +86,7 @@ function totalCarrito(){
   let total = 0;
   let totalAmount = 0;
   tabla.style.display = 'block';
-  for(compra in carrito){
+  for(let compra in carrito){
     let nombre = `<td>${carrito[compra].name}</td>`;
     let precio = `<td>${carrito[compra].price}</td>`;
     let cantidad = `<td>${carrito[compra].count}</td>`;
@@ -112,7 +112,7 @@ function totalCarrito(){
 function productPrime(){
   tabla.style.display = 'block';
   let listPrime = [];
-  for (compra in carrito){
+  for (let compra in carrito){
     if(carrito[compra].premium == true){
       listPrime.push(carrito[compra]);
       let nombre = `<td>${carrito[compra].name}</td>`;

@@ -1,0 +1,23 @@
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  justify-items: center;
+  font-size: 1.2em;
+}
+
+.product-units{
+  margin: 12px;
+}
+
+#button-calculate{
+  margin: 12px;
+  padding: 12px;
+  width: 200px;
+  background-color: rgb(8, 98, 43);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.2em;
+}

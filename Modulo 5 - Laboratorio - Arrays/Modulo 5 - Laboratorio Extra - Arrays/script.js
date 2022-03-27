@@ -196,7 +196,7 @@ let ejer6 = document.getElementById('resultado9');
 ejer6.addEventListener('load', mayorEdad(arrEjer6));
 
 function mayorEdad(arrEjer6) {
-  for (person in arrEjer6) {
+  for (let person in arrEjer6) {
     if (arrEjer6[person].age >= 18) {
       ejer6.innerHTML += "id: " + arrEjer6[person].id;
       ejer6.innerHTML += "&nbsp&nbspname: " + arrEjer6[person].name;
@@ -216,19 +216,19 @@ ejer7.addEventListener('load', insertMayorEdad(arrEjer6));
 
 
 function insertMayorEdad(arrEjer6) {
-  for (person in arrEjer6) {
+  for (let person in arrEjer6) {
     if (arrEjer6[person].age >= 18) {
       arrMayorEdad.push(arrEjer6[person]);
     } else {
       arrMenorEdad.push(arrEjer6[person]);
     }
   }
-  for (person in arrMayorEdad) {
+  for (let person in arrMayorEdad) {
     ejer7.innerHTML += "&nbsp&nbspid: " + arrMayorEdad[person].id;
     ejer7.innerHTML += "&nbsp&nbspname: " + arrMayorEdad[person].name;
     ejer7.innerHTML += "&nbsp&nbspage: " + arrMayorEdad[person].age + "<br>";
   }
-  for (person in arrMenorEdad) {
+  for (let person in arrMenorEdad) {
     ejer7b.innerHTML += "&nbsp&nbspid: " + arrMenorEdad[person].id;
     ejer7b.innerHTML += "&nbsp&nbspname: " + arrMenorEdad[person].name;
     ejer7b.innerHTML += "&nbsp&nbspage: " + arrMenorEdad[person].age + "<br>";
@@ -279,20 +279,20 @@ ejer8.addEventListener('load', incremento(arrayHoteles));
 
 
 function incremento(arrayHoteles) {
-  for (hotel in arrayHoteles) {
+  for (let hotel in arrayHoteles) {
     if (arrayHoteles[hotel].availableRooms < 10) {
       arrayIncremento.push(arrayHoteles[hotel])
     } else {
       arraySinIncremento.push(arrayHoteles[hotel]);
     }
   }
-  for (room in arrayIncremento) {
+  for (let room in arrayIncremento) {
     ejer8.innerHTML += "&nbsp&nbsphotelId: " + arrayIncremento[room].hotelId;
     ejer8.innerHTML += "&nbsp&nbsphotelName: " + arrayIncremento[room].hotelName;
     ejer8.innerHTML += "&nbsp&nbspavailableRooms: " + arrayIncremento[room].availableRooms;
     ejer8.innerHTML += "&nbsp&nbspprice: " + arrayIncremento[room].price + " - Incremento 10€: " + (arrayIncremento[room].price + 10) + "<br>";
   }
-  for (room in arraySinIncremento) {
+  for (let room in arraySinIncremento) {
     ejer8b.innerHTML += "&nbsp&nbsphotelId: " + arraySinIncremento[room].hotelId;
     ejer8b.innerHTML += "&nbsp&nbsphotelName: " + arraySinIncremento[room].hotelName;
     ejer8b.innerHTML += "&nbsp&nbspavailableRooms: " + arraySinIncremento[room].availableRooms;
@@ -342,12 +342,12 @@ let ejer9 = document.getElementById('resultado14');
 ejer9.addEventListener('load', incremento2(arrayHoteles2));
 
 function incremento2(arrayHoteles2){
-  for(hotel in arrayHoteles2){
+  for(let hotel in arrayHoteles2){
     if(arrayHoteles2[hotel].availableRooms < 10){
       arrayIncremento2.push(arrayHoteles2[hotel]);
     }
   }
-  for (room in arrayIncremento2) {
+  for (let room in arrayIncremento2) {
     ejer9.innerHTML += "&nbsp&nbsphotelId: " + arrayIncremento2[room].hotelId;
     ejer9.innerHTML += "&nbsp&nbsphotelName: " + arrayIncremento2[room].hotelName;
     ejer9.innerHTML += "&nbsp&nbspavailableRooms: " + arrayIncremento2[room].availableRooms;
