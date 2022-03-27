@@ -95,8 +95,14 @@ var createPrice = product => {
   container.appendChild(productPrice)
 }
 showProducts(products);
-var calSubTotal = product => {
-  var subTotal = 0;
+
+document.getElementById('button-calculate').addEventListener('click', () => {
   
-}
-document.getElementById('button-calculate').addEventListener('click', () => console.log(products))
+  var calSubTotal = product => {
+    var subTotal = 0;
+    for(let product of products) {
+      subTotal = products[product].units * products[product].price
+    }
+    console.log(subTotal);
+  }
+})
