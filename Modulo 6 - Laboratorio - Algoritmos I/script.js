@@ -3,8 +3,7 @@ const REGULAR_TYPE = 21;
 const LOWER_TYPE = 4;
 const EXEMPT_TYPE = 0;
 // Entrada.
-const products = [
-  {
+const products = [{
     description: "Goma de borrar",
     price: 0.25,
     tax: LOWER_TYPE,
@@ -97,12 +96,36 @@ var createPrice = product => {
 showProducts(products);
 
 document.getElementById('button-calculate').addEventListener('click', () => {
-  
-  var calSubTotal = product => {
-    var subTotal = 0;
-    for(let product of products) {
-      subTotal = products[product].units * products[product].price
-    }
-    console.log(subTotal);
-  }
+  document.getElementById('Subtotal').innerHTML = "Subtotal: " + totalCost(products) + "€";
+  document.getElementById('iva').innerHTML = "IVA: " + getIva(products) + "€";
+  document.getElementById('total').innerHTML = "TOTAL: " + getTotal() + "€";
+
 })
+
+var getTotal = () => {
+  var total = 0;
+  total = totalCost(products) + getIva(products);
+  console.log(total);
+  return total;
+}
+
+var productCost = product => {
+  var productCost = (product.price * product.units);
+  return productCost;
+}
+
+var totalCost = productList => {
+  var totalCost = 0;
+  for (var product of productList) {
+    if (product.units > 0) totalCost += productCost(product);
+  }
+  return parseInt(totalCost.toFixed(2));
+}
+
+var getIva = productList => {
+  var totalIva = 0;
+  for (var product of productList) {
+    totalIva += productCost(product) * product.tax / 100;
+  }
+  return parseInt(totalIva.toFixed(2));
+}
