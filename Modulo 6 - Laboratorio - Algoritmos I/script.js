@@ -117,7 +117,7 @@ var productCost = product => {
 var totalCost = productList => {
   var totalCost = 0;
   for (var product of productList) {
-    if (product.units > 0) totalCost += productCost(product);
+    if (product.units >= 0) totalCost += productCost(product);
   }
   return parseInt(totalCost.toFixed(2));
 }
