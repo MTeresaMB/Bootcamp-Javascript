@@ -1,0 +1,11 @@
+.btn{
+  display: inline-block;
+  margin-left: 50px;
+}
+.text{
+  display: block;
+  margin: 20px;
+}
+h2{
+  margin-left: 100px;
+}
