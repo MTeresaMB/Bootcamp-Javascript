@@ -43,34 +43,63 @@ var squareWithBorder = (n, charBorder, charInner) => {
 }
 squareWithBorder(4, 'B', '*');
 
-// document.write("<h1>Ejercicio 3 Cuadrado Diagonal Left-Right</h1>");
-// /**
-//  * Ejercicio 3 Cuadrado Diagonal Left-Right
-//  * @param {*} n 
-//  * @param {*} charDiagonal 
-//  * @param {*} charUp 
-//  * @param {*} charDown 
-//  */
-// var squareDiagonalLR = (n, charDiagonal, charUp, charDown) =>{
+document.write("<h1>Ejercicio 3 Cuadrado Diagonal Left-Right</h1>");
+/**
+ * Ejercicio 3 Cuadrado Diagonal Left-Right
+ * @param {*} n 
+ * @param {*} charDiagonal 
+ * @param {*} charUp 
+ * @param {*} charDown 
+ */
+var contador = 0;
+var t = "";
+var squareDiagonalRL = (n, charDiagonal, charUp, charDown) =>{
+  for(let i = 0; i < n; i++){
+    for(let j = 0; j < n; j++){ 
+      if(j < contador){
+        t+=charDown;
+      }else if(j == contador){
+        t+=charDiagonal;
+      }else {
+        t+=charUp; 
+      }
+    }
+    contador++;
+    t+="<br>";
+  }
+  document.write(t);
+}
+squareDiagonalRL(5, "\\", "A", "B");
 
-// }
+document.write("<h1>Ejercicio 4 Cuadrado Diagonal Right-Left</h1>");
+/**
+ * Ejercicio 4 Cuadrado Diagonal Right-Left
+ * @param {*} n 
+ * @param {*} charDiagonal 
+ * @param {*} charUp 
+ * @param {*} charDown 
+ */
+ 
+var squareDiagonalLR = (n, charDiagonal, charUp, charDown) =>{
+  var contador = n - 1;
+  var t = "";
+  for(let i = 0; i < n; i++){
+    for(let j = 0; j < n; j++){ 
+      if(j < contador){
+        t+=charDown;
+      }else if(j == contador){
+        t+=charDiagonal;
+      }else {
+        t+=charUp; 
+      }
+    }
+    contador--;
+    t+="<br>";
+  }
+  document.write(t);
+}
 
-// squareDiagonalLR = (n, charDiagonal, charUp, charDown);
-
-// document.write("<h1>Ejercicio 4 Cuadrado Diagonal Right-Left</h1>");
-
-// /**
-//  * Ejercicio 4 Cuadrado Diagonal Right-Left
-//  * @param {*} n 
-//  * @param {*} charDiagonal 
-//  * @param {*} charUp 
-//  * @param {*} charDown 
-//  */
-// var squareDiagonalRL = (n, charDiagonal, charUp, charDown) =>{
-
-// }
-
-// squareDiagonalRL = (n, charDiagonal, charUp, charDown);
+squareDiagonalLR(5, "/", "A", "B");
 
 document.write("<h1>Ejercicio 5 Medio Diamante</h1>");
 /**
@@ -138,6 +167,5 @@ var diamond = (n , char) => {
     }
     document.write("<br>");
   }
-
 }
 diamond(5, '*');
