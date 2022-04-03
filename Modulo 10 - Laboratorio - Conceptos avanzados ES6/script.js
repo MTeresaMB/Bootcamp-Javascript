@@ -9,10 +9,8 @@ const user = {
   role: 'Administrator',
   age: 36
 };
-let hasId = object =>{
-  if(object.hasOwnProperty('name')) return true;
-  else return false;
-}
+let hasId = object => object.hasOwnProperty('name') === true ? true : false;
+
 console.log(hasId(user));
 
 /**
@@ -21,9 +19,7 @@ console.log(hasId(user));
  console.log('Ejercicio 2');
 const tvSeries = ['x-files', 'outlander', 'bridgerton', 'brooklyn 99', 'downton abbey', 'big bang theory'];
 console.log(tvSeries);
-function head(array){
-  return array = tvSeries.shift();
-}
+const head = (array) => array = tvSeries.shift();
 console.log(head(tvSeries));
 
 /**
@@ -66,7 +62,43 @@ filtrado con aquellas palabras que empiecen por a.
  */
 
 console.log('Ejercicio 6');
+const arrPalabras = ['Apple', 'Orange', 'Pinapple', 'Banana', 'Peach', 'Apricot', 'pear', 'Plum'];
+const wordsStartingWithA = arrayPalabras => arrayPalabras.filter(words => words.startsWith('P') || words.startsWith('p'));
+console.log(wordsStartingWithA(arrPalabras));
 
-const wordsStartingWithA = arrayPalabras =>{
+/**
+ * Ejercicio 7 Implementa una función llamada concat tal que admita múltiples argumentos de tipo string y devuelva otro string con la
+concatenación de todos, separados por | .
+ */
 
+const concatPalabras = ['Apple', 'Orange', false, 'Banana', 'Peach', 48, 'pear', true];
+console.log('Ejercicio 7');
+const concat = (concatPalabras) => (concatPalabras).join(" | ");
+console.log(concat(concatPalabras));
+
+/**
+ * Ejercicio 8 Implementa una función llamada multArray que admita un array de números ( arr ) y otro parámetro que sea un número
+( x ) y devuelva un nuevo array donde cada elemento ha sido multiplicado por x.
+ */
+
+console.log('Ejercicio 8');
+const arrayNumbers = [2,5,7,4,9,6];
+function multArray(arr, n){
+  let result = arr.map(x =>{
+    return x * n
+  });
+  return result;
 }
+console.log(multArray(arrayNumbers, 2)); 
+
+/**
+ * Ejercicio 9 Implementa una función llamada calcMult que admita múltiples números como argumento y devuelva como resultado el
+producto de todos ellos.
+ */
+console.log('Ejercicio 9');
+const calcMult = arrayNumbers => {
+  let result = arrayNumbers.reduce((acc, number) => acc * number);
+  return result;
+};
+
+console.log(calcMult(arrayNumbers));
